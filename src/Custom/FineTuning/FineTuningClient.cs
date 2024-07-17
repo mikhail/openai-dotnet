@@ -1,8 +1,12 @@
 ﻿using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
+using System.Text.Json;
 
 namespace OpenAI.FineTuning;
+
+
+
 
 /// <summary>
 /// The service client for OpenAI fine-tuning operations.
@@ -61,5 +65,18 @@ public partial class FineTuningClient
     {
         _pipeline = pipeline;
         _endpoint = endpoint;
+    }
+
+    /// <summary> Create a job with a training file and model. </summary>
+    /// <param name="training_file"> The training file name that is already uploaded. String should match pattern '^file-[a-zA-Z0-9]{24}$'  </param>
+    /// <param name="model"> The model name to fine-tune. String such as "gpt-3.5-turbo" </param>
+    public Job CreateJob(string training_file, string model, RequestOptions options = null)
+    {
+        var oPayload = new { training_file, model };
+        string sPayload = JsonSerializer.Serialize(oPayload);
+        var content = System.ClientModel.BinaryContent.Create(new BinaryData(sPayload));
+        ClientResult clientResult = CreateJob(content, options);
+
+        return System.Text.Json.JsonSerializer.Deserialize<Job>(clientResult.GetRawResponse().Content.ToString());
     }
 }

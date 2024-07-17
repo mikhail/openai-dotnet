@@ -175,7 +175,7 @@ public partial class FineTuningClient
     /// <exception cref="ArgumentException"> <paramref name="jobId"/> is an empty string, and was expected to be non-empty. </exception>
     /// <exception cref="ClientResultException"> Service returned a non-success status code. </exception>
     /// <returns> The response returned from the service. </returns>
-    public virtual ClientResult CancelJob(string jobId, RequestOptions options)
+    public virtual ClientResult CancelJob(string jobId, RequestOptions options = null)
     {
         Argument.AssertNotNullOrEmpty(jobId, nameof(jobId));
 

@@ -43,6 +43,31 @@ dotnet add package OpenAI --prerelease
 
 Note that the code examples included below were written using [.NET 8](https://dotnet.microsoft.com/download/dotnet/8.0). The OpenAI .NET library is compatible with all .NET Standard 2.0 applications but some code examples in this document may depend on newer language features.
 
+## Developing
+
+
+```
+dotnet build
+```
+
+You should see an output similar to this:
+
+```
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  OpenAI -> C:\Users\you\Source\Repos\you\openai-dotnet\src\bin\Debug\netstandard2.0\OpenAI.dll
+  OpenAI -> C:\Users\you\Source\Repos\you\openai-dotnet\src\bin\Debug\net6.0\OpenAI.dll
+  OpenAI.Tests -> C:\Users\you\Source\Repos\you\openai-dotnet\tests\bin\Debug\net8.0\OpenAI.Tests.dll
+  OpenAI.Examples -> C:\Users\you\Source\Repos\you\openai-dotnet\examples\bin\Debug\net8.0\OpenAI.Examples.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.11
+```
+
+
 ## Using the client library
 
 The full API of this library can be found in the [api.md](https://github.com/openai/openai-dotnet/blob/main/api/api.md) file, and there are many [code examples](https://github.com/openai/openai-dotnet/tree/main/examples) to help. For instance, the following snippet illustrates the basic use of the chat completions API:
